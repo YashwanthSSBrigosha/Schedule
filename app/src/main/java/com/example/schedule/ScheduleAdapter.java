@@ -13,10 +13,10 @@ import java.util.ArrayList;
 
 public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder> {
 
-    ArrayList<Schedule> scheduleArrayList;
+    ArrayList<ScheduleClass> scheduleClassArrayList;
 
-    public ScheduleAdapter(ArrayList<Schedule> scheduleArrayList) {
-        this.scheduleArrayList = scheduleArrayList;
+    public ScheduleAdapter(ArrayList<ScheduleClass> scheduleClassArrayList) {
+        this.scheduleClassArrayList = scheduleClassArrayList;
     }
 
     @NonNull
@@ -29,32 +29,36 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
 
     @Override
     public void onBindViewHolder(@NonNull ScheduleViewHolder holder, int position) {
-        Schedule currentSchedule = scheduleArrayList.get(position);
+        ScheduleClass currentScheduleClass = scheduleClassArrayList.get(position);
 
-        holder.subject.setText(currentSchedule.getSubject());
-        holder.classAndBranch.setText(currentSchedule.getClassAndBranch());
-        holder.name.setText(currentSchedule.getProfileName());
-        holder.imgInfo.setImageResource(currentSchedule.getInfoImage());
+        holder.imgInfo.setImageResource(currentScheduleClass.getInfoImg());
+        holder.subjectName.setText(currentScheduleClass.getSubjectName());
+        holder.className.setText(currentScheduleClass.getClassName());
+        holder.section.setText(currentScheduleClass.getSection());
+        holder.stream.setText(currentScheduleClass.getStream());
+        holder.teacherName.setText(currentScheduleClass.getTeacherName());
 
     }
 
     @Override
     public int getItemCount() {
-        return scheduleArrayList.size();
+        return scheduleClassArrayList.size();
     }
 
     public class ScheduleViewHolder extends RecyclerView.ViewHolder {
 
-        TextView subject, classAndBranch, name;
+        TextView teacherName,subjectName,className,section,stream;
         ImageView imgInfo;
 
 
         public ScheduleViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            subject = itemView.findViewById(R.id.txtSubject);
-            classAndBranch = itemView.findViewById(R.id.txtClass);
-            name = itemView.findViewById(R.id.profileName);
+            teacherName = itemView.findViewById(R.id.profileName);
+            subjectName = itemView.findViewById(R.id.txtSubject);
+            className = itemView.findViewById(R.id.txtClass);
+            section = itemView.findViewById(R.id.section);
+            stream = itemView.findViewById(R.id.stream);
             imgInfo = itemView.findViewById(R.id.infoImg);
         }
     }

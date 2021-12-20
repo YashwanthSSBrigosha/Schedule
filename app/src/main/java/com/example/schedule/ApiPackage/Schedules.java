@@ -3,12 +3,12 @@ package com.example.schedule.ApiPackage;
 import java.util.List;
 
 public class Schedules {
-    public List<Object> scheduled;
+    public List<Scheduled> scheduled;
     public List<Ongoing> ongoing;
     public List<Completed> completed;
     public List<Cancelled> cancelled;
 
-    public List<Object> getScheduled() {
+    public List<Scheduled> getScheduled() {
         return scheduled;
     }
 

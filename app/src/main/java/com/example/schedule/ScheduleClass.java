@@ -1,46 +1,64 @@
 package com.example.schedule;
 
-public class Schedule {
+public class ScheduleClass {
 
-    String subject,classAndBranch,profileName;
-    int infoImage;
+    String teacherName,className,subjectName,section,stream;
+    int infoImg;
 
-    public Schedule(String subject, String classAndBranch, String profileName, int infoImage) {
-        this.subject = subject;
-        this.classAndBranch = classAndBranch;
-        this.profileName = profileName;
-        this.infoImage = infoImage;
+    public ScheduleClass(String teacherName, String className, String subjectName, String section, String stream, int infoImg) {
+        this.teacherName = teacherName;
+        this.className = className;
+        this.subjectName = subjectName;
+        this.section = section;
+        this.stream = stream;
+        this.infoImg = infoImg;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getTeacherName() {
+        return teacherName;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
     }
 
-    public String getClassAndBranch() {
-        return classAndBranch;
+    public String getClassName() {
+        return className;
     }
 
-    public void setClassAndBranch(String classAndBranch) {
-        this.classAndBranch = classAndBranch;
+    public void setClassName(String className) {
+        this.className = className;
     }
 
-    public String getProfileName() {
-        return profileName;
+    public String getSubjectName() {
+        return subjectName;
     }
 
-    public void setProfileName(String profileName) {
-        this.profileName = profileName;
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
     }
 
-    public int getInfoImage() {
-        return infoImage;
+    public String getSection() {
+        return section;
     }
 
-    public void setInfoImage(int infoImage) {
-        this.infoImage = infoImage;
+    public void setSection(String section) {
+        this.section = section;
+    }
+
+    public String getStream() {
+        return stream;
+    }
+
+    public void setStream(String stream) {
+        this.stream = stream;
+    }
+
+    public int getInfoImg() {
+        return infoImg;
+    }
+
+    public void setInfoImg(int infoImg) {
+        this.infoImg = infoImg;
     }
 }
