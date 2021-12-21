@@ -37,6 +37,8 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
         holder.section.setText(currentScheduleClass.getSection());
         holder.stream.setText(currentScheduleClass.getStream());
         holder.teacherName.setText(currentScheduleClass.getTeacherName());
+        holder.startTime.setText(currentScheduleClass.getStartTime());
+        holder.endTime.setText(currentScheduleClass.getEndTime());
 
     }
 
@@ -47,7 +49,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
 
     public class ScheduleViewHolder extends RecyclerView.ViewHolder {
 
-        TextView teacherName,subjectName,className,section,stream;
+        TextView teacherName,subjectName,className,section,stream,startTime,endTime;
         ImageView imgInfo;
 
 
@@ -60,6 +62,8 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
             section = itemView.findViewById(R.id.section);
             stream = itemView.findViewById(R.id.stream);
             imgInfo = itemView.findViewById(R.id.infoImg);
+            startTime=itemView.findViewById(R.id.startTimeText);
+            endTime=itemView.findViewById(R.id.endTimeText);
         }
     }
 }

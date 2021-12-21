@@ -84,16 +84,15 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 GetScheduleHomePageResponse getScheduleHomePageResponse = response.body();
-                ArrayList<Completed> completedArrayList = (ArrayList<Completed>) getScheduleHomePageResponse.schedules.getCompleted();
-                for (Completed c:
-                     completedArrayList) {
-                    Log.i("Teacher Name",c.getTeacher().getName());
-                    scheduleClassArrayList.add(new ScheduleClass(c.getTeacher().getName(),
-                            c.getStandards().get(0).getStd(),
-                            c.getSubject().getName(),
-                            c.getStandards().get(0).getSection(),
-                            c.getStandards().get(0).getStream(),
-                            R.drawable.lab_broadcast));
+                ArrayList<Ongoing> ongoingArrayList = (ArrayList<Ongoing>) getScheduleHomePageResponse.schedules.getOngoing();
+                for (Ongoing o
+                :ongoingArrayList) {
+                    Log.i("Teacher Name",o.getTeacher().getName());
+                    scheduleClassArrayList.add(new ScheduleClass(o.getTeacher().getName(),
+                            o.getStandards().get(0).getStd(),
+                            o.getSubject().getName(),
+                            o.getStandards().get(0).getSection(),
+                            o.getStandards().get(0).getStream(),o.getStartTime(),o.getEndTime(),R.drawable.lab_broadcast));
                 }
                 layoutManager = new LinearLayoutManager(getApplicationContext());
                 recyclerView.setLayoutManager(layoutManager);

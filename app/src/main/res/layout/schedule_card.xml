@@ -11,7 +11,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -125,11 +125,13 @@
             android:id="@+id/imgSubject"
             android:layout_width="68dp"
             android:layout_height="68dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
             android:src="@color/teal_700"
             app:layout_constraintBottom_toTopOf="@+id/imageProfile"
-            app:layout_constraintLeft_toLeftOf="parent" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txtOnline"
@@ -140,6 +142,7 @@
             android:text="25 online"
             android:textColor="#636363"
             android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgDefault"
             app:layout_constraintLeft_toRightOf="@+id/imgDefault"
             app:layout_constraintTop_toTopOf="@+id/imgDefault" />
 
@@ -162,7 +165,7 @@
             android:text="Sample Name"
             android:textColor="#636363"
             android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageProfile"
+            app:layout_constraintBottom_toTopOf="@+id/progressBar"
             app:layout_constraintLeft_toRightOf="@+id/imageProfile" />
 
         <ImageView
@@ -170,21 +173,50 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginLeft="24dp"
-            android:layout_marginBottom="24dp"
             android:src="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/progressBar"
-            app:layout_constraintLeft_toLeftOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/profileName"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/profileName" />
 
         <ProgressBar
             android:id="@+id/progressBar"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="44dp"
-            android:paddingHorizontal="35dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="32dp"
+            android:paddingHorizontal="45dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profileName" />
+
+        <TextView
+            android:id="@+id/startTimeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/endTimeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+        </TextView>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
