@@ -2,10 +2,10 @@ package com.example.schedule;
 
 public class ScheduleClass {
 
-    String teacherName, className, subjectName, section, stream, startTime, endTime;
+    String teacherName, className, subjectName, section, stream, startTime, endTime, imgUrl, iconUrl;
     int infoImg;
 
-    public ScheduleClass(String teacherName, String className, String subjectName, String section, String stream, String startTime, String endTime, int infoImg) {
+    public ScheduleClass(String teacherName, String className, String subjectName, String section, String stream, String startTime, String endTime, String imgUrl, String iconUrl, int infoImg) {
         this.teacherName = teacherName;
         this.className = className;
         this.subjectName = subjectName;
@@ -14,6 +14,8 @@ public class ScheduleClass {
         this.startTime = startTime;
         this.endTime = endTime;
         this.infoImg = infoImg;
+        this.imgUrl = imgUrl;
+        this.iconUrl = iconUrl;
     }
 
     public String getTeacherName() {
@@ -54,6 +56,22 @@ public class ScheduleClass {
 
     public void setStream(String stream) {
         this.stream = stream;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public String getIconUrl() {
+        return iconUrl;
+    }
+
+    public void setIconUrl(String iconUrl) {
+        this.iconUrl = iconUrl;
     }
 
     public String getStartTime() {

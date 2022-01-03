@@ -12,27 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.schedule.ApiPackage.ApiClient;
 import com.example.schedule.ApiPackage.ApiService;
-import com.example.schedule.ApiPackage.CancelScheduleResponse;
-import com.example.schedule.ApiPackage.Cancelled;
 import com.example.schedule.ApiPackage.Completed;
-import com.example.schedule.ApiPackage.CreateScheduleRequest;
-import com.example.schedule.ApiPackage.CreateScheduleResponse;
-import com.example.schedule.ApiPackage.DeleteScheduleResponse;
-import com.example.schedule.ApiPackage.EditOccurenceRequest;
-import com.example.schedule.ApiPackage.EditOccurenceResponse;
-import com.example.schedule.ApiPackage.GetScheduleByParamResponse;
 import com.example.schedule.ApiPackage.GetScheduleHomePageResponse;
-import com.example.schedule.ApiPackage.GetSummaryDataResponse;
-import com.example.schedule.ApiPackage.GetTeacherListResponse;
-import com.example.schedule.ApiPackage.GetTimetableResponse;
-import com.example.schedule.ApiPackage.JoinClassResponse;
 import com.example.schedule.ApiPackage.Ongoing;
-import com.example.schedule.ApiPackage.Scheduled;
-import com.example.schedule.ApiPackage.UpdateScheduleRequest;
-import com.example.schedule.ApiPackage.UpdateScheduleResponse;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -85,18 +69,24 @@ public class MainActivity extends AppCompatActivity {
                 }
                 GetScheduleHomePageResponse getScheduleHomePageResponse = response.body();
                 ArrayList<Ongoing> ongoingArrayList = (ArrayList<Ongoing>) getScheduleHomePageResponse.schedules.getOngoing();
-                for (Ongoing o
-                :ongoingArrayList) {
-                    Log.i("Teacher Name",o.getTeacher().getName());
+                ArrayList<Completed> completedArrayList = (ArrayList<Completed>) getScheduleHomePageResponse.schedules.getCompleted();
+                for (Completed o
+                        : completedArrayList) {
+                    Log.i("Teacher Name", o.getSubject().getIcon());
                     scheduleClassArrayList.add(new ScheduleClass(o.getTeacher().getName(),
                             o.getStandards().get(0).getStd(),
                             o.getSubject().getName(),
                             o.getStandards().get(0).getSection(),
-                            o.getStandards().get(0).getStream(),o.getStartTime(),o.getEndTime(),R.drawable.lab_broadcast));
+                            o.getStandards().get(0).getStream(),
+                            o.getStartTime(),
+                            o.getEndTime(),
+                            o.getTeacher().getImage(),
+                            o.getSubject().getIcon(),
+                            R.drawable.lab_broadcast));
                 }
                 layoutManager = new LinearLayoutManager(getApplicationContext());
                 recyclerView.setLayoutManager(layoutManager);
-                adapter = new ScheduleAdapter(scheduleClassArrayList);
+                adapter = new ScheduleAdapter(scheduleClassArrayList,MainActivity.this);
                 recyclerView.setAdapter(adapter);
             }
 

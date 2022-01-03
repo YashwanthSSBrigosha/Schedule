@@ -1,5 +1,7 @@
 package com.example.schedule;
 
+import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,14 +11,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder> {
 
     ArrayList<ScheduleClass> scheduleClassArrayList;
+    Context context;
+    private static final String baseUrlForImages = "https://s3.ap-south-1.amazonaws.com/test.files.classroom.digital/";
 
-    public ScheduleAdapter(ArrayList<ScheduleClass> scheduleClassArrayList) {
+    public ScheduleAdapter(ArrayList<ScheduleClass> scheduleClassArrayList,Context context) {
         this.scheduleClassArrayList = scheduleClassArrayList;
+        this.context  = context;
     }
 
     @NonNull
@@ -40,6 +48,16 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
         holder.startTime.setText(currentScheduleClass.getStartTime());
         holder.endTime.setText(currentScheduleClass.getEndTime());
 
+        Glide.with(context).load(baseUrlForImages+currentScheduleClass.getImgUrl()).into(holder.teacherImg);
+        Utils.fetchSvg(context,baseUrlForImages+currentScheduleClass.getIconUrl(), holder.subIcon);
+//        Glide.with(context).load(baseUrlForImages+currentScheduleClass.getIconUrl()).into(holder.subIcon);
+//        Picasso.with(context)
+//        .load(baseUrlForImages+currentScheduleClass.getIconUrl())
+//        .into(holder.subIcon);
+//        Picasso.with(context)
+//        .load(baseUrlForImages+currentScheduleClass.getImgUrl())
+//        .into(holder.teacherImg);
+
     }
 
     @Override
@@ -49,8 +67,8 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
 
     public class ScheduleViewHolder extends RecyclerView.ViewHolder {
 
-        TextView teacherName,subjectName,className,section,stream,startTime,endTime;
-        ImageView imgInfo;
+        TextView teacherName, subjectName, className, section, stream, startTime, endTime;
+        ImageView imgInfo, teacherImg, subIcon;
 
 
         public ScheduleViewHolder(@NonNull View itemView) {
@@ -62,8 +80,10 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
             section = itemView.findViewById(R.id.section);
             stream = itemView.findViewById(R.id.stream);
             imgInfo = itemView.findViewById(R.id.infoImg);
-            startTime=itemView.findViewById(R.id.startTimeText);
-            endTime=itemView.findViewById(R.id.endTimeText);
+            startTime = itemView.findViewById(R.id.startTimeText);
+            endTime = itemView.findViewById(R.id.endTimeText);
+            teacherImg = itemView.findViewById(R.id.imageProfile);
+            subIcon = itemView.findViewById(R.id.imgSubject);
         }
     }
 }
