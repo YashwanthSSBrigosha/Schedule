@@ -1,7 +1,6 @@
 package com.example.schedule;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,19 +11,25 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder> {
+
+    String resultStartTime, resultEndTime;
+    String formatTwelve;
+    Date date = null;
 
     ArrayList<ScheduleClass> scheduleClassArrayList;
     Context context;
     private static final String baseUrlForImages = "https://s3.ap-south-1.amazonaws.com/test.files.classroom.digital/";
 
-    public ScheduleAdapter(ArrayList<ScheduleClass> scheduleClassArrayList,Context context) {
+    public ScheduleAdapter(ArrayList<ScheduleClass> scheduleClassArrayList, Context context) {
         this.scheduleClassArrayList = scheduleClassArrayList;
-        this.context  = context;
+        this.context = context;
     }
 
     @NonNull
@@ -37,19 +42,44 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
 
     @Override
     public void onBindViewHolder(@NonNull ScheduleViewHolder holder, int position) {
+
         ScheduleClass currentScheduleClass = scheduleClassArrayList.get(position);
+
+        SimpleDateFormat twentyfourFormat = new SimpleDateFormat("hh:mm");
+
+        try {
+            date = twentyfourFormat.parse(currentScheduleClass.getStartTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        formatTwelve = twentyfourFormat.format(date);
+        if (formatTwelve.equals(currentScheduleClass.getStartTime())) {
+            resultStartTime = formatTwelve;
+        } else {
+            resultStartTime = formatTwelve;
+        }
+
+        try {
+            date = twentyfourFormat.parse(currentScheduleClass.getEndTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        formatTwelve = twentyfourFormat.format(date);
+        if (formatTwelve.equals(currentScheduleClass.getEndTime())) {
+            resultEndTime = formatTwelve + "AM";
+        } else {
+            resultEndTime = formatTwelve + "PM";
+        }
+
 
         holder.imgInfo.setImageResource(currentScheduleClass.getInfoImg());
         holder.subjectName.setText(currentScheduleClass.getSubjectName());
-        holder.className.setText(currentScheduleClass.getClassName());
-        holder.section.setText(currentScheduleClass.getSection());
-        holder.stream.setText(currentScheduleClass.getStream());
         holder.teacherName.setText(currentScheduleClass.getTeacherName());
-        holder.startTime.setText(currentScheduleClass.getStartTime());
-        holder.endTime.setText(currentScheduleClass.getEndTime());
+        holder.startTime.setText(resultStartTime);
+        holder.endTime.setText(resultEndTime);
 
-        Glide.with(context).load(baseUrlForImages+currentScheduleClass.getImgUrl()).into(holder.teacherImg);
-        Utils.fetchSvg(context,baseUrlForImages+currentScheduleClass.getIconUrl(), holder.subIcon);
+        Glide.with(context).load(baseUrlForImages + currentScheduleClass.getImgUrl()).into(holder.teacherImg);
+        Utils.fetchSvg(context, baseUrlForImages + currentScheduleClass.getIconUrl(), holder.subIcon);
 //        Glide.with(context).load(baseUrlForImages+currentScheduleClass.getIconUrl()).into(holder.subIcon);
 //        Picasso.with(context)
 //        .load(baseUrlForImages+currentScheduleClass.getIconUrl())
@@ -80,8 +110,8 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
             section = itemView.findViewById(R.id.section);
             stream = itemView.findViewById(R.id.stream);
             imgInfo = itemView.findViewById(R.id.infoImg);
-            startTime = itemView.findViewById(R.id.startTimeText);
-            endTime = itemView.findViewById(R.id.endTimeText);
+            startTime = itemView.findViewById(R.id.startTimetv);
+            endTime = itemView.findViewById(R.id.endTimetv);
             teacherImg = itemView.findViewById(R.id.imageProfile);
             subIcon = itemView.findViewById(R.id.imgSubject);
         }

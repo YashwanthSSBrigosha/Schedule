@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="0dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
@@ -14,7 +15,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/cardView"
         android:layout_marginTop="-7dp"
-        android:layout_marginBottom="-7dp">
+        android:layout_marginBottom="-7dp"
+        android:layout_marginStart="12dp">
 
 
         <View
@@ -22,46 +24,57 @@
             android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#AEAEAE" />
+            android:background="#AEAEAE"
+            android:layout_marginBottom="4dp"/>
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_time_filled" />
+            app:srcCompat="@drawable/ic_time_filled"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
 
         <TextView
-            android:id="@+id/textView3"
+            android:textSize="12sp"
+            android:id="@+id/startTimetv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="TextView"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
 
         <TextView
-            android:id="@+id/textView4"
+            android:textSize="12sp"
+            android:id="@+id/endTimetv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="TextView"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"/>
 
         <View
             android:id="@+id/view7"
             android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#AEAEAE" />
+            android:background="#AEAEAE"
+            android:layout_marginTop="4dp"/>
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="6dp"
+        android:layout_marginStart="24dp"
         android:background="@color/white"
         android:elevation="8dp"
         app:cardCornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="12dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -101,79 +114,6 @@
                 app:layout_constraintLeft_toRightOf="@+id/imgSubject"
                 app:layout_constraintTop_toBottomOf="@+id/infoImg" />
 
-            <TextView
-                android:id="@+id/txtClass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/roboto"
-                android:text="class"
-                android:textColor="#636363"
-                android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@+id/imgSubject"
-                app:layout_constraintTop_toBottomOf="@+id/txtSubject" />
-
-            <TextView
-                android:id="@+id/hypen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/roboto"
-                android:text="-"
-                android:textColor="#636363"
-                android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@+id/txtClass"
-                app:layout_constraintTop_toBottomOf="@+id/txtSubject">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/section"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/roboto"
-                android:text="clas"
-                android:textColor="#636363"
-                android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@+id/hypen"
-                app:layout_constraintTop_toBottomOf="@+id/txtSubject">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/colon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/roboto"
-                android:text=":"
-                android:textColor="#636363"
-                android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@+id/section"
-                app:layout_constraintTop_toBottomOf="@+id/txtSubject">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/stream"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/roboto"
-                android:text="classs"
-                android:textColor="#636363"
-                android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@+id/colon"
-                app:layout_constraintTop_toBottomOf="@+id/txtSubject">
-
-            </TextView>
-
             <ImageView
                 android:id="@+id/imgSubject"
                 android:layout_width="68dp"
@@ -181,7 +121,6 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toTopOf="@+id/imageProfile"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -202,10 +141,10 @@
                 android:id="@+id/imgDefault"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="170dp"
                 android:src="@drawable/ic_user_default"
+                app:layout_constraintLeft_toRightOf="@+id/profileName"
+                android:layout_marginLeft="24dp"
                 app:layout_constraintBottom_toBottomOf="@+id/profileName"
-                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/profileName" />
 
             <TextView
@@ -217,56 +156,22 @@
                 android:text="Sample Name"
                 android:textColor="#636363"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toTopOf="@+id/progressBar"
-                app:layout_constraintLeft_toRightOf="@+id/imageProfile" />
+                app:layout_constraintBottom_toBottomOf="@+id/imageProfile"
+                app:layout_constraintLeft_toRightOf="@+id/imageProfile"
+                app:layout_constraintTop_toTopOf="@+id/imageProfile" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageProfile"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginLeft="24dp"
-                app:layout_constraintBottom_toBottomOf="@+id/profileName"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="24dp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/profileName"
+                app:layout_constraintTop_toBottomOf="@+id/imgSubject"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
 
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:paddingHorizontal="45dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.454"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profileName" />
-
-            <TextView
-                android:id="@+id/startTimeText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="24dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/progressBar">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/endTimeText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginBottom="24dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/progressBar">
-
-            </TextView>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

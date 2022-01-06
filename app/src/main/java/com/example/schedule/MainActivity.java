@@ -70,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 GetScheduleHomePageResponse getScheduleHomePageResponse = response.body();
-                ArrayList<Ongoing> ongoingArrayList = (ArrayList<Ongoing>) getScheduleHomePageResponse.schedules.getOngoing();
-                ArrayList<Completed> completedArrayList = (ArrayList<Completed>) getScheduleHomePageResponse.schedules.getCompleted();
                 ArrayList<Scheduled> scheduledArrayList = (ArrayList<Scheduled>) getScheduleHomePageResponse.schedules.getScheduled();
                 for (Scheduled s
                         : scheduledArrayList) {
@@ -80,8 +78,8 @@ public class MainActivity extends AppCompatActivity {
                             s.getSubject().getName(),
                             s.getStandards().get(0).getSection(),
                             s.getStandards().get(0).getStream(),
-                            s.getStartTime(),
-                            s.getEndTime(),
+                            s.getStartTime().substring(0,s.getStartTime().length()-3),
+                            s.getEndTime().substring(0,s.getEndTime().length()-3),
                             s.getTeacher().getImage(),
                             s.getSubject().getIcon(),
                             R.drawable.lab_broadcast));
