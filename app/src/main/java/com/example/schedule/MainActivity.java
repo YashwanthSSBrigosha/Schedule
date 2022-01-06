@@ -15,6 +15,8 @@ import com.example.schedule.ApiPackage.ApiService;
 import com.example.schedule.ApiPackage.Completed;
 import com.example.schedule.ApiPackage.GetScheduleHomePageResponse;
 import com.example.schedule.ApiPackage.Ongoing;
+import com.example.schedule.ApiPackage.Schedule;
+import com.example.schedule.ApiPackage.Scheduled;
 
 import java.util.ArrayList;
 
@@ -64,24 +66,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<GetScheduleHomePageResponse> call, Response<GetScheduleHomePageResponse> response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), response.code(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), String.valueOf(response.code()), Toast.LENGTH_LONG).show();
                     return;
                 }
                 GetScheduleHomePageResponse getScheduleHomePageResponse = response.body();
                 ArrayList<Ongoing> ongoingArrayList = (ArrayList<Ongoing>) getScheduleHomePageResponse.schedules.getOngoing();
                 ArrayList<Completed> completedArrayList = (ArrayList<Completed>) getScheduleHomePageResponse.schedules.getCompleted();
-                for (Completed o
-                        : completedArrayList) {
-                    Log.i("Teacher Name", o.getSubject().getIcon());
-                    scheduleClassArrayList.add(new ScheduleClass(o.getTeacher().getName(),
-                            o.getStandards().get(0).getStd(),
-                            o.getSubject().getName(),
-                            o.getStandards().get(0).getSection(),
-                            o.getStandards().get(0).getStream(),
-                            o.getStartTime(),
-                            o.getEndTime(),
-                            o.getTeacher().getImage(),
-                            o.getSubject().getIcon(),
+                ArrayList<Scheduled> scheduledArrayList = (ArrayList<Scheduled>) getScheduleHomePageResponse.schedules.getScheduled();
+                for (Scheduled s
+                        : scheduledArrayList) {
+                    scheduleClassArrayList.add(new ScheduleClass(s.getTeacher().getName(),
+                            s.getStandards().get(0).getStd(),
+                            s.getSubject().getName(),
+                            s.getStandards().get(0).getSection(),
+                            s.getStandards().get(0).getStream(),
+                            s.getStartTime(),
+                            s.getEndTime(),
+                            s.getTeacher().getImage(),
+                            s.getSubject().getIcon(),
                             R.drawable.lab_broadcast));
                 }
                 layoutManager = new LinearLayoutManager(getApplicationContext());
